@@ -1,80 +1,123 @@
-Cyber Intrusion Detection and Classification Analysis
+Cyber Intrusion Detection and Classification using R
+An in-depth analysis of the UNSW-NB15 dataset to identify the key characteristics of various cyber-attacks. This project uses R and the Tidyverse ecosystem to perform data cleaning, exploratory data analysis, statistical testing, predictive modeling, and provides an interactive console for on-demand data exploration.
+
+Table of Contents
 Project Overview
-This project performs an in-depth analysis of the UNSW-NB15 dataset to identify key characteristics of various cyber-attacks. It uses the R programming language to clean the raw data, perform extensive exploratory and statistical analysis, build a predictive model, and provide an interactive console for on-demand data exploration.
 
-The project is structured into two main R scripts:
-
-data_preparation.R: Handles all data cleaning and pre-processing.
-
-visualize.R: Performs all data analysis, generates plots, and contains the final interactive data explorer.
+Key Features
 
 File Structure
-To run this project, ensure the following files are all in the same directory:
+
+Getting Started
+
+Prerequisites
+
+Installation & Usage
+
+Showcase of Results
+
+Generated Output Files
+
+Project Members
+
+Project Overview
+This project provides a comprehensive analysis of network traffic data to differentiate normal activity from 9 distinct types of cyber-attacks. The workflow is divided into two main scripts:
+
+data_preparation.R: Handles all data cleaning, pre-processing, and transformation tasks to prepare the raw data for analysis.
+
+visualize.R: The main analysis engine. It performs all statistical analyses, generates visualizations, builds a predictive model, and contains the final interactive data explorer.
+
+The ultimate goal is to turn raw network data into meaningful, actionable insights for decision-making in the cybersecurity domain.
+
+Key Features
+7 In-Depth Analysis Objectives: Goes beyond simple descriptions to include comparative, relational, predictive, and inferential statistical analyses.
+
+Predictive Modeling: Implements a logistic regression model to identify the most significant network features for detecting an attack.
+
+Statistical Hypothesis Testing: Uses ANOVA to statistically validate findings and draw robust conclusions.
+
+Advanced Visualizations: Creates a variety of plots including a correlation heatmap, faceted charts, density plots, and more to uncover hidden patterns.
+
+Fully Interactive Console: Features a powerful, menu-driven interactive explorer that allows a user to ask questions, generate plots, view model results, and export data on-demand.
+
+File Structure
+To run this project, ensure the following files are all located in the same root directory:
 
 /your-project-folder
 |-- data_preparation.R
 |-- visualize.R
 |-- UNSW-NB15_uncleaned.csv
 |-- 6. NUSW-NB15_features (data description).csv
+|-- README.md
 
-A new folder named result/ will be created automatically when you run the analysis script to store all generated plots and data files.
+A result/ folder will be created automatically to store all generated output.
 
+Getting Started
 Prerequisites
-R and RStudio: You must have R and RStudio installed on your system.
+R and RStudio: You must have a recent version of R and RStudio installed.
 
-R Packages: The script is designed to be self-contained. It will automatically check for, download, and install the required packages (tidyverse, corrplot, and broom) if they are not already present.
+Installation & Usage
+The project is designed to be self-contained and easy to run.
 
-How to Use This Project: A Step-by-Step Guide
-Step 1: Open the Project in RStudio
-Open the visualize.R file in RStudio. This is the main script you will interact with.
+Open the Project: Open the visualize.R file in RStudio. This is the main script you will execute.
 
-Step 2: Run the Analysis Script
-With the visualize.R file open, run the entire script. You can do this by clicking the "Source" button in RStudio or by using the shortcut Ctrl+Shift+Enter.
+Run the Script: Run the entire script by clicking the "Source" button in RStudio or by using the shortcut Ctrl+Shift+Enter. The script will automatically:
 
-The script is designed to be robust:
+Install any required R packages (tidyverse, corrplot, broom).
 
-It will first check if the clean data file (UNSW-NB15_cleaned.csv) exists.
+Run the data_preparation.R script if the cleaned data file is missing.
 
-If it does not exist, it will automatically run the data_preparation.R script to create it for you.
+Execute all 7 analysis objectives and save the output to the result/ folder.
 
-It will then proceed to run all 7 analysis objectives, saving all plots and data files to the result/ folder.
-
-You will see a series of "SUCCESS" messages printed in the console as each step is completed.
-
-Step 3: Using the Interactive Data Explorer
-After the script has finished running (which may take a moment), your R console will be ready for the final, interactive part of the project.
-
-To start the interactive session, type the following command directly into the R console and press Enter:
+Launch the Interactive Explorer: After the script finishes, type the following command directly into the R console and press Enter to start the interactive session:
 
 ask_the_data()
 
-You will be greeted with a welcome message and a menu of 10 options.
+You will be greeted with a menu of 10 options to explore the data and analysis results. Type exit to quit.
 
-How it works: Simply type the number corresponding to your question and press Enter. The function will then prompt you for any additional information it needs (like an attack name or a filename) and will instantly perform the analysis and print the answer or save the requested file.
+Showcase of Results
+Below are some of the key visualizations generated by the analysis, providing insights into the dataset.
 
-To Exit: When you are finished, simply type exit and press Enter.
+Attack Distribution
+An initial overview showing the frequency of each attack category in the dataset. "Generic" and "Exploits" are the most common attack types.
 
-This interactive tool allows you to directly query the dataset, generate plots and reports on demand, and even export specific subsets of the data without needing to write any new code.
+Connection State Analysis
+This faceted chart reveals the unique "fingerprints" of different attacks. Note the high prevalence of INT (Interrupted) states for "Reconnaissance" attacks, a strong indicator of scanning activity.
 
+Correlation Heatmap
+This heatmap provides a high-level view of relationships between all numerical features. The strong positive correlation (dark blue) between sbytes and spkts (source bytes and source packets) is logical, while other correlations can inspire deeper investigation.
 
-what are the use of these files
-Plots for Your Main Objectives
-attack_distribution.png:  This is your starting point. It's a bar chart that answers the basic question: "How many records of each attack type (and normal traffic) are in the dataset?" It gives you an overview of the data's composition.
+Predictive Model Coefficients
+This plot visualizes the output of the logistic regression model, making it easy to see which features are the most important predictors of an attack. Features marked "Significant" have a statistically proven impact.
 
-duration_by_attack_category.png: This box plot (from Objective 1) compares the connection durations for different attacks. It helps you understand the behavior of attacks, showing that some (like DoS) are very quick, while others (like Backdoors) are longer-lasting.
+Generated Output Files
+The visualize.R script generates the following files in the result/ folder:
 
-correlation_heatmap.png:  This advanced plot (from Objective 2) is a high-level overview of how all the numerical features relate to each other. The dark blue and red squares show you strong relationships that you can investigate further.
+Plots
+attack_distribution.png: Bar chart showing the frequency of each attack category.
 
-sbytes_vs_sloss_by_attack.png: This scatter plot (from Objective 4) is a deep-dive analysis inspired by the heatmap. It visualizes the relationship between the amount of data sent (sbytes) and the number of lost packets (sloss), showing how this pattern differs for each attack type.
+duration_by_attack_category.png: Box plot comparing connection durations across attack types.
 
-state_distribution_by_attack.png: This faceted bar chart (from Objective 5) shows which connection states (FIN, INT, RST, etc.) are most common for each attack. It provides powerful clues about how different attacks manipulate network protocols.
+correlation_heatmap.png: Heatmap visualizing the relationships between all numerical features.
 
-rate_density_normal_vs_exploits.png: This density plot (from Objective 7) directly compares the behavior of "Normal" traffic against "Exploits" attacks based on their connection rate. The different shapes of the curves visually prove that their behaviors are distinct.
+sbytes_vs_sloss_by_attack.png: Scatter plot showing the relationship between data volume and packet loss.
 
-Outputs from Your Additional Features
-breakdown_dos_by_proto.png and breakdown_exploits_by_service.png: These two plots are the output of your first additional feature (plot_attack_breakdown). They demonstrate the function's ability to automatically generate detailed analyses for specific attacks, showing which protocols are used in DoS attacks and which services are targeted by Exploits.
+state_distribution_by_attack.png: Faceted bar chart comparing connection states for each attack.
 
-model_coefficients.png:  This plot is the output of your second additional feature (plot_model_coefficients). It makes the complex results of your predictive model easy to understand by visually showing which network features are the most important predictors of an attack.
+rate_density_normal_vs_exploits.png: Density plot comparing connection rates for Normal vs. Exploits traffic.
 
-The Prediction Data File
-prediction_results.csv: This is the CSV file generated by your predictive model in Objective 3. It contains the original input data plus two new columns: the model's calculated probability of an attack, and its final prediction ("Predicted Attack" or "Predicted Normal"). This file is the raw output of your prediction analysis.
+breakdown_*.png: On-demand plots generated by the interactive explorer.
+
+model_coefficients.png: Bar chart visualizing the importance of predictors from the logistic regression model.
+
+Data Files
+prediction_results.csv: Contains the input data for the model plus its final predictions (probability and label).
+
+anova_result.csv: A tidy table containing the full statistical output of the ANOVA test.
+
+User-Exported Files: Any CSV files generated on-demand using option 10 in the interactive explorer.
+
+Project Members
+Lim Shiaw Yong (TP076172)
+
+[Add other group members here]
